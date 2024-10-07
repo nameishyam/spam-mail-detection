@@ -1,22 +1,24 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Student Placement Prediction</title>
+    <title>Email Spam Prediction</title>
     <style>
         body {
             font-family: Arial, sans-serif;
             margin: 50px;
+            background-color: #f9f9f9; /* added a light gray background */
         }
         .form-container {
             max-width: 500px;
             margin: auto;
-            padding: 20px;
+            padding: 30px; /* increased padding for better spacing */
             border: 1px solid #ccc;
             border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* added a subtle shadow */
         }
         .form-container input {
             width: 100%;
-            padding: 10px;
+            padding: 15px; /* increased padding for better spacing */
             margin: 5px 0 20px 0;
             display: inline-block;
             border: 1px solid #ccc;
@@ -27,6 +29,7 @@
             background-color: #4CAF50;
             color: white;
             border: none;
+            cursor: pointer; /* added a pointer cursor on hover */
         }
         .form-container input[type="submit"]:hover {
             background-color: #45a049;
@@ -36,6 +39,11 @@
             color: #4CAF50;
             text-align: center;
             margin-top: 20px;
+            font-weight: bold; /* added bold font weight for emphasis */
+        }
+        h2 {
+            margin-top: 0; /* removed default margin top */
+            color: #333; /* darkened the header text color */
         }
     </style>
 </head>
@@ -45,7 +53,7 @@
         <form action="/predict" method="post">
             <label for="mail_content">Mail Content:</label>
             <input type="text" name="mail_content" required>
-            
+            <br><br> <!-- added a line break for better spacing -->
             <input type="submit" value="Predict">
         </form>
         {% if prediction_text %}
