@@ -47,6 +47,6 @@ if (st.button("Predict")):
     result = model.predict(vector_input)[0]
 
     if result == 0:
-        st.header("Not Spam")
+        st.header("Not Spam!")
     else:
-        st.header("Spam")
+        st.header("Spam!")
