@@ -38,13 +38,15 @@ st.title("email classifier")
 
 input_mail = st.text_input("Enter the text to classify")
 
-transformed_email = transform_text(input_mail)
+if (st.button("Predict")):
 
-vector_input = tfidf.transform([transformed_email])
+    transformed_email = transform_text(input_mail)
 
-result = model.predict(vector_input)[0]
+    vector_input = tfidf.transform([transformed_email])
 
-if result == 0:
-    st.header("Spam")
-else:
-    st.header("Not Spam")
+    result = model.predict(vector_input)[0]
+
+    if result == 0:
+        st.header("Not Spam")
+    else:
+        st.header("Spam")
