@@ -51,9 +51,9 @@ def predict():
         prediction = spam_model.predict(vector_input)
         
         if prediction == 0:
-            output = 'Not Spam!'
+            output = 'Not a Spam Mail!'
         else:
-            output = 'Spam!'
+            output = 'Spam Mail!'
         
         return render_template('index.html', prediction_text='Prediction: {}'.format(output))
     except Exception as e:
