@@ -1,5 +1,3 @@
-# app.py
-
 from flask import Flask, request, render_template
 import pickle
 import nltk
@@ -8,11 +6,13 @@ from nltk.corpus import stopwords
 from nltk.stem.porter import PorterStemmer
 import string
 
-nltk.download('punkt_tab')
+# Download necessary NLTK data
+nltk.download('punkt')
+nltk.download('stopwords')
 
 porter_stemmer = PorterStemmer()
 
-# Load the trained model
+# Load the trained model and vectorizer
 tfidf_vectorizer = pickle.load(open('vectorizer.pkl', 'rb'))
 spam_model = pickle.load(open('model.pkl', 'rb'))
 
@@ -20,11 +20,10 @@ def tokenize_text(text):
     return nltk.word_tokenize(text.lower())
 
 def filter_tokens(tokens):
-    return [token for token in tokens if token.isalnum() and token not in stopwords.words('english') and token not in string.punctuation]
+    return [token for token in tokens if token.isalnum() and token not in stopwords.words('english')]
 
 def stem_tokens(tokens):
     return [porter_stemmer.stem(token) for token in tokens]
-
 
 def transform_text(text):
     tokens = tokenize_text(text)
@@ -46,13 +45,10 @@ def predict():
             return 'Invalid input', 400
         
         transformed_email = transform_text(input_mail)
-        print("Transformed Email:", transformed_email)
         
         vector_input = tfidf_vectorizer.transform([transformed_email])
-        print("Vectorized Input:", vector_input.toarray())
         
         prediction = spam_model.predict(vector_input)
-        print("Prediction:", prediction)
         
         if prediction == 0:
             output = 'Not Spam!'
@@ -61,7 +57,7 @@ def predict():
         
         return render_template('index.html', prediction_text='Prediction: {}'.format(output))
     except Exception as e:
-        return 'Error occurred: {}'.format(str(e))
+        return f'Error occurred: {str(e)}'
 
 if __name__ == "__main__":
-    app.run(debug = True)
+    app.run(debug=True)
