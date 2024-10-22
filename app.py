@@ -13,8 +13,8 @@ nltk.download('stopwords')
 porter_stemmer = PorterStemmer()
 
 # Load the trained model and vectorizer
-tfidf_vectorizer = pickle.load(open('vectorizer.pkl', 'rb'))
-spam_model = pickle.load(open('model.pkl', 'rb'))
+tfidf_vectorizer = pickle.load(open('./models/vectorizer.pkl', 'rb'))
+spam_model = pickle.load(open('./models/model.pkl', 'rb'))
 
 def tokenize_text(text):
     return nltk.word_tokenize(text.lower())
