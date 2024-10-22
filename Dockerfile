@@ -17,4 +17,4 @@ COPY . .
 EXPOSE 5000
 
 # 7. Define the command to run your application (modify based on your app)
-CMD ["python", "app.py"]
+CMD ["gunicorn", "app:app", "--bind", "0.0.0.0:5000"]
