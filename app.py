@@ -10,7 +10,7 @@ import string
 # nltk.download('punkt')
 # nltk.download('stopwords')
 
-nltk.data.path.append('./nltk_data')
+nltk.data.path.append('./nltk-data')
 
 
 porter_stemmer = PorterStemmer()
