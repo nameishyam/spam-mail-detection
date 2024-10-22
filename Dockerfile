@@ -11,7 +11,7 @@ COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
 # Download necessary NLTK resources
-RUN python -m nltk.downloader -d /nltk-data punkt stopwords
+RUN python -m nltk.downloader -d /usr/local/share/nltk_data punkt stopwords punkt_tab
 
 # 5. Copy the rest of your application code
 COPY . .
