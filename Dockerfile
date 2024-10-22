@@ -7,6 +7,9 @@ WORKDIR /app
 # 3. Copy your requirements.txt (or environment.yml) to install dependencies
 COPY requirements.txt .
 
+# Download necessary NLTK resources
+RUN python -m nltk.downloader -d /nltk_data all
+
 # 4. Install dependencies
 RUN pip install --no-cache-dir -r requirements.txt
 
