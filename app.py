@@ -6,15 +6,10 @@ from nltk.corpus import stopwords
 from nltk.stem.porter import PorterStemmer
 import string
 
-# Download necessary NLTK data
-# nltk.download('punkt')
-# nltk.download('stopwords')
-
 nltk.data.path.append('/usr/local/share/nltk_data')
 
 porter_stemmer = PorterStemmer()
 
-# Load the trained model and vectorizer
 tfidf_vectorizer = pickle.load(open('./models/vectorizer.pkl', 'rb'))
 spam_model = pickle.load(open('./models/model.pkl', 'rb'))
 
